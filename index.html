@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CalculatorPro.net - Free Online Calculators</title>
+      <meta name="description" content="Free online calculators for financial, math, health and more calculations. Professional calculator website with mortgage, loan, BMI, scientific calculators and more.">
+      <meta name="keywords" content="calculator, online calculator, free calculator, mortgage calculator, loan calculator, BMI calculator, scientific calculator">
+      <style>
+                * {
+                              margin: 0;
+                              padding: 0;
+                              box-sizing: border-box;
+                }
+
+                body {
+                              font-family: 'Arial', sans-serif;
+                              background-color: #f5f7fa;
+                }
+
+                .header {
+                              background: linear-gradient(135deg, #2c5aa0 0%, #1e3a72 100%);
+                              color: white;
+                              padding: 1rem 0;
+                              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .container {
+                              max-width: 1200px;
+                              margin: 0 auto;
+                              padding: 0 20px;
+                }
+
+                .nav {
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                              flex-wrap: wrap;
+                }
+
+                .logo {
+                              font-size: 1.8rem;
+                              font-weight: bold;
+                              color: #66ff99;
+                }
+
+                .search-box {
+                              display: flex;
+                              align-items: center;
+                              gap: 10px;
+                }
+
+                .search-input {
+                              padding: 8px 15px;
+                              border: none;
+                              border-radius: 5px;
+                              font-size: 14px;
+                }
+
+                .search-btn {
+                              background: #5a7bc7;
+                              color: white;
+                              border: none;
+                              padding: 8px 15px;
+                              border-radius: 5px;
+                              cursor: pointer;
+                }
+
+                .main-calc {
+                              background: white;
+                              margin: 2rem auto;
+                              padding: 2rem;
+                              border-radius: 10px;
+                              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                              max-width: 800px;
+                }
+
+                .calc-title {
+                              text-align: center;
+                              color: #2c5aa0;
+                              margin-bottom: 1rem;
+                }
+
+                .calculator {
+                              display: grid;
+                              grid-template-columns: 2fr 1fr;
+                              gap: 2rem;
+                              align-items: start;
+                }
+
+                .calc-display {
+                              background: #2c5aa0;
+                              color: white;
+                              padding: 15px;
+                              font-size: 2rem;
+                              text-align: right;
+                              border-radius: 5px;
+                              margin-bottom: 1rem;
+                              min-height: 60px;
+                              display: flex;
+                              align-items: center;
+                              justify-content: flex-end;
+                }
+
+                .calc-buttons {
+                              display: grid;
+                              grid-template-columns: repeat(4, 1fr);
+                              gap: 10px;
+                }
+
+                .calc-btn {
+                              padding: 15px;
+                              font-size: 1.2rem;
+                              border: none;
+                              border-radius: 5px;
+                              cursor: pointer;
+                              transition: all 0.3s;
+                }
+
+                .calc-btn:hover {
+                              transform: translateY(-2px);
+                              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                }
+
+                .calc-btn.number {
+                              background: #e8f2ff;
+                              color: #2c5aa0;
+                }
+
+                .calc-btn.operator {
+                              background: #2c5aa0;
+                              color: white;
+                }
+
+                .calc-btn.equals {
+                              background: #4CAF50;
+                              color: white;
+                              grid-column: span 2;
+                }
+
+                .calc-btn.clear {
+                              background: #f44336;
+                              color: white;
+                }
+
+                .categories {
+                              margin: 3rem 0;
+                }
+
+                .categories-grid {
+                              display: grid;
+                              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                              gap: 2rem;
+                              margin-top: 2rem;
+                }
+
+                .category-card {
+                              background: white;
+                              padding: 2rem;
+                              border-radius: 10px;
+                              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                              transition: transform 0.3s;
+                }
+
+                .category-card:hover {
+                              transform: translateY(-5px);
+                }
+
+                .category-icon {
+                              font-size: 3rem;
+                              margin-bottom: 1rem;
+                              text-align: center;
+                }
+
+                .category-title {
+                              color: #2c5aa0;
+                              font-size: 1.3rem;
+                              margin-bottom: 1rem;
+                              text-align: center;
+                }
+
+                .category-links {
+                              list-style: none;
+                }
+
+                .category-links li {
+                              margin-bottom: 0.5rem;
+                }
+
+                .category-links a {
+                              color: #5a7bc7;
+                              text-decoration: none;
+                              font-size: 0.9rem;
+                }
+
+                .category-links a:hover {
+                              color: #2c5aa0;
+                              text-decoration: underline;
+                }
+
+                .footer {
+                              background: #2c5aa0;
+                              color: white;
+                              text-align: center;
+                              padding: 2rem 0;
+                              margin-top: 3rem;
+                }
+
+                .footer-links {
+                              margin-bottom: 1rem;
+                }
+
+                .footer-links a {
+                              color: white;
+                              text-decoration: none;
+                              margin: 0 15px;
+                }
+
+                .footer-links a:hover {
+                              text-decoration: underline;
+                }
+
+                .search-section {
+                              text-align: center;
+                              margin: 2rem 0;
+                }
+
+                .search-section h2 {
+                              color: #2c5aa0;
+                              margin-bottom: 1rem;
+                }
+
+                @media (max-width: 768px) {
+                              .calculator {
+                                                grid-template-columns: 1fr;
+                              }
+
+                              .nav {
+                                                flex-direction: column;
+                                                gap: 1rem;
+                              }
+
+                              .calc-buttons {
+                                                grid-template-columns: repeat(4, 1fr);
+                              }
+                }
+            </style>
+  </head>
+  <body>
+        <header class="header">
+                  <div class="container">
+                                <nav class="nav">
+                                                  <div class="logo">CalculatorPro.net</div>div>
+                                                  <div class="search-box">
+                                                                        <input type="text" class="search-input" placeholder="Search calculators..." id="searchInput">
+                                                                        <button class="search-btn" onclick="searchCalculators()">Search</button>button>
+                                                  </div>div>
+                                </nav>nav>
+                  </div>div>
+        </header>header>
+
+        <main class="container">
+                  <section class="main-calc">
+                                <h1 class="calc-title">Free Online Calculators</h1>h1>
+                                <div class="calculator">
+                                                  <div>
+                                                                        <div class="calc-display" id="display">0</div>
+                                                                        <div class="calc-buttons">
+                                                                                                  <button class="calc-btn clear" onclick="clearDisplay()">AC</button>button>
+                                                                                                  <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>button>
+                                                                                                  <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>button>
+                                                                                                  <button class="calc-btn operator" onclick="deleteLast()">⌫</button>button>
+
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('7')">7</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('8')">8</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('9')">9</button>button>
+                                                                                                  <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>button>
+
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('4')">4</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('5')">5</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('6')">6</button>button>
+                                                                                                  <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>button>
+
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('1')">1</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('2')">2</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('3')">3</button>button>
+                                                                                                  <button class="calc-btn equals" onclick="calculate()" rowspan="2">=</button>button>
+
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>button>
+                                                                                                  <button class="calc-btn number" onclick="appendToDisplay('.')">.</button>button>
+                                                                        </div>
+                                                  </div>
+
+                                                  <div class="search-section">
+                                                                        <h2>Find Calculator</h2>
+                                                                      <p>Search from 200+ specialized calculators</p>
+                                                  </div>
+                                </div>
+                  </section>section>
+        
+                <section class="categories">
+                            <div class="categories-grid">
+                                            <div class="category-card">
+                                                                <div class="category-icon">��</div>
+                                                                <h3 class="category-title">Financial Calculators</h3>
+                                                                <ul class="category-links">
+                                                                                        <li><a href="#mortgage">Mortgage Calculator</a>a></li>
+                                                                                        <li><a href="#loan">Loan Calculator</a>a></li>
+                                                                                        <li><a href="#auto-loan">Auto Loan Calculator</a>a></li>
+                                                                                        <li><a href="#interest">Interest Calculator</a>a></li>
+                                                                                        <li><a href="#payment">Payment Calculator</a>a></li>
+                                                                                        <li><a href="#retirement">Retirement Calculator</a>a></li>
+                                                                                        <li><a href="#amortization">Amortization Calculator</a>a></li>
+                                                                                        <li><a href="#investment">Investment Calculator</a>a></li>
+                                                                                        <li><a href="#inflation">Inflation Calculator</a>a></li>
+                                                                                        <li><a href="#tax">Income Tax Calculator</a>a></li>
+                                                                                        <li><a href="#compound">Compound Interest Calculator</a>a></li>
+                                                                                        <li><a href="#salary">Salary Calculator</a>a></li>
+                                                                </ul>ul>
+                                            </div>
+                            
+                                            <div class="category-card">
+                                                                <div class="category-icon">��‍♂️</div>
+                                                                <h3 class="category-title">Fitness & Health Calculators</h3>
+                                                                <ul class="category-links">
+                                                                                        <li><a href="#bmi">BMI Calculator</a>a></li>
+                                                                                        <li><a href="#calorie">Calorie Calculator</a>a></li>
+                                                                                        <li><a href="#body-fat">Body Fat Calculator</a>a></li>
+                                                                                        <li><a href="#bmr">BMR Calculator</a>a></li>
+                                                                                        <li><a href="#ideal-weight">Ideal Weight Calculator</a>a></li>
+                                                                                        <li><a href="#pace">Pace Calculator</a>a></li>
+                                                                                        <li><a href="#pregnancy">Pregnancy Calculator</a>a></li>
+                                                                                        <li><a href="#due-date">Due Date Calculator</a>a></li>
+                                                                                        <li><a href="#heart-rate">Heart Rate Calculator</a>a></li>
+                                                                                        <li><a href="#water">Water Intake Calculator</a>a></li>
+                                                                </ul>ul>
+                                            </div>
+                            
+                                            <div class="category-card">
+                                                                <div class="category-icon">��</div>
+                                                                <h3 class="category-title">Math Calculators</h3>
+                                                                <ul class="category-links">
+                                                                                        <li><a href="#scientific">Scientific Calculator</a>a></li>
+                                                                                        <li><a href="#fraction">Fraction Calculator</a>a></li>
+                                                                                        <li><a href="#percentage">Percentage Calculator</a>a></li>
+                                                                                        <li><a href="#random">Random Number Generator</a>a></li>
+                                                                                        <li><a href="#triangle">Triangle Calculator</a>a></li>
+                                                                                        <li><a href="#standard-deviation">Standard Deviation Calculator</a>a></li>
+                                                                                        <li><a href="#algebra">Algebra Calculator</a>a></li>
+                                                                                        <li><a href="#geometry">Geometry Calculator</a>a></li>
+                                                                                        <li><a href="#statistics">Statistics Calculator</a>a></li>
+                                                                </ul>ul>
+                                            </div>
+                            
+                                            <div class="category-card">
+                                                                <div class="category-icon">��</div>
+                                                                <h3 class="category-title">Other Calculators</h3>
+                                                                <ul class="category-links">
+                                                                                        <li><a href="#age">Age Calculator</a>a></li>
+                                                                                        <li><a href="#date">Date Calculator</a>a></li>
+                                                                                        <li><a href="#time">Time Calculator</a>a></li>
+                                                                                        <li><a href="#hours">Hours Calculator</a>a></li>
+                                                                                        <li><a href="#gpa">GPA Calculator</a>a></li>
+                                                                                        <li><a href="#grade">Grade Calculator</a>a></li>
+                                                                                        <li><a href="#concrete">Concrete Calculator</a>a></li>
+                                                                                        <li><a href="#subnet">Subnet Calculator</a>a></li>
+                                                                                        <li><a href="#password">Password Generator</a>a></li>
+                                                                                        <li><a href="#conversion">Conversion Calculator</a>a></li>
+                                                                </ul>ul>
+                                            </div>
+                            </div>
+                </section>section>
+        </main>main>
+  
+      <footer class="footer">
+              <div class="container">
+                          <div class="footer-links">
+                                          <a href="#about">About Us</a>a>
+                                          <a href="#sitemap">Sitemap</a>a>
+                                          <a href="#terms">Terms of Use</a>a>
+                                          <a href="#privacy">Privacy Policy</a>a>
+                                          <a href="#contact">Contact</a>a>
+                          </div>
+                          <p>&copy; 2024 CalculatorPro.net. All rights reserved. | Fast, comprehensive, convenient, free online calculators.</p>
+              </div>
+      </footer>footer>
+  
+      <script>
+                let display = document.getElementById('display');
+                let currentInput = '0';
+                let shouldResetDisplay = false;
+
+                function appendToDisplay(value) {
+                              if (shouldResetDisplay) {
+                                                currentInput = '';
+                                                shouldResetDisplay = false;
+                              }
+
+                              if (currentInput === '0' && value !== '.') {
+                                                currentInput = value;
+                              } else {
+                                                currentInput += value;
+                              }
+
+                              display.textContent = currentInput;
+                }
+
+                function clearDisplay() {
+                              currentInput = '0';
+                              display.textContent = currentInput;
+                }
+
+                function deleteLast() {
+                              if (currentInput.length > 1) {
+                                                currentInput = currentInput.slice(0, -1);
+                              } else {
+                                                currentInput = '0';
+                              }
+                              display.textContent = currentInput;
+                }
+
+                function calculate() {
+                              try {
+                                                // Replace × with * for calculation
+                                                let expression = currentInput.replace(/×/g, '*');
+                                                let result = eval(expression);
+
+                                                if (isNaN(result) || !isFinite(result)) {
+                                                                      throw new Error('Invalid calculation');
+                                                }
+
+                                                currentInput = result.toString();
+                                                display.textContent = currentInput;
+                                                shouldResetDisplay = true;
+                              } catch (error) {
+                                                display.textContent = 'Error';
+                                                currentInput = '0';
+                                                shouldResetDisplay = true;
+                              }
+                }
+
+                function searchCalculators() {
+                              const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                              if (searchTerm) {
+                                                alert('Search functionality will help you find specific calculators. This is a demo - in a full implementation, this would search through all available calculators.');
+                              }
+                }
+
+                // Keyboard support
+                document.addEventListener('keydown', function(event) {
+                              const key = event.key;
+
+                              if (key >= '0' && key <= '9') {
+                                                appendToDisplay(key);
+                              } else if (key === '.') {
+                                                appendToDisplay('.');
+                              } else if (key === '+' || key === '-') {
+                                                appendToDisplay(key);
+                              } else if (key === '*') {
+                                                appendToDisplay('*');
+                              } else if (key === '/') {
+                                                event.preventDefault();
+                                                appendToDisplay('/');
+                              } else if (key === 'Enter' || key === '=') {
+                                                event.preventDefault();
+                                                calculate();
+                              } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                                                clearDisplay();
+                              } else if (key === 'Backspace') {
+                                                event.preventDefault();
+                                                deleteLast();
+                              }
+                });
+
+                // Add smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                              anchor.addEventListener('click', function (e) {
+                                                e.preventDefault();
+                                                const target = document.querySelector(this.getAttribute('href'));
+                                                if (target) {
+                                                                      target.scrollIntoView({
+                                                                                                behavior: 'smooth'
+                                                                        });
+                                                }
+                              });
+                });
+      </script>
+  </body>
+</html>html>
+      </script></p></li></li></p></h2>
+                                                  </div>
+  </body>
+      </style></title>
+  </head>
