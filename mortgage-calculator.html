@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mortgage Calculator - Calculate Monthly Mortgage Payment | CalculatorPro.net</title>
+      <meta name="description" content="Free mortgage calculator to calculate monthly payments, total interest, and loan amortization. Compare different mortgage rates and terms.">
+      <meta name="keywords" content="mortgage calculator, home loan calculator, monthly payment calculator, mortgage rates, loan amortization, house payment calculator">
+      <style>
+                * {
+                              margin: 0;
+                              padding: 0;
+                              box-sizing: border-box;
+                }
+
+                body {
+                              font-family: 'Arial', sans-serif;
+                              background-color: #f5f7fa;
+                              line-height: 1.6;
+                }
+
+                .header {
+                              background: linear-gradient(135deg, #2c5aa0 0%, #1e3a72 100%);
+                              color: white;
+                              padding: 1rem 0;
+                              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .container {
+                              max-width: 1200px;
+                              margin: 0 auto;
+                              padding: 0 20px;
+                }
+
+                .nav {
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                              flex-wrap: wrap;
+                }
+
+                .logo {
+                              font-size: 1.8rem;
+                              font-weight: bold;
+                              color: #66ff99;
+                              text-decoration: none;
+                }
+
+                .nav-links {
+                              display: flex;
+                              gap: 2rem;
+                }
+
+                .nav-links a {
+                              color: white;
+                              text-decoration: none;
+                              font-weight: 500;
+                }
+
+                .nav-links a:hover {
+                              color: #66ff99;
+                }
+
+                .main-content {
+                              margin: 2rem 0;
+                }
+
+                .calculator-section {
+                              background: white;
+                              padding: 2rem;
+                              border-radius: 10px;
+                              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                              margin-bottom: 2rem;
+                }
+
+                .page-title {
+                              color: #2c5aa0;
+                              font-size: 2.5rem;
+                              text-align: center;
+                              margin-bottom: 1rem;
+                }
+
+                .page-description {
+                              text-align: center;
+                              color: #666;
+                              font-size: 1.1rem;
+                              margin-bottom: 2rem;
+                              max-width: 600px;
+                              margin-left: auto;
+                              margin-right: auto;
+                }
+
+                .mortgage-calculator {
+                              display: grid;
+                              grid-template-columns: 1fr 1fr;
+                              gap: 3rem;
+                              align-items: start;
+                }
+
+                .calculator-form {
+                              background: #f8f9fa;
+                              padding: 2rem;
+                              border-radius: 10px;
+                }
+
+                .form-group {
+                              margin-bottom: 1.5rem;
+                }
+
+                .form-group label {
+                              display: block;
+                              margin-bottom: 0.5rem;
+                              font-weight: 600;
+                              color: #2c5aa0;
+                }
+
+                .form-group input,
+                .form-group select {
+                              width: 100%;
+                              padding: 12px;
+                              border: 2px solid #ddd;
+                              border-radius: 5px;
+                              font-size: 1rem;
+                }
+
+                .form-group input:focus,
+                .form-group select:focus {
+                              outline: none;
+                              border-color: #2c5aa0;
+                }
+
+                .input-group {
+                              position: relative;
+                }
+
+                .input-prefix {
+                              position: absolute;
+                              left: 12px;
+                              top: 50%;
+                              transform: translateY(-50%);
+                              color: #666;
+                              font-weight: 600;
+                }
+
+                .input-prefix + input {
+                              padding-left: 30px;
+                }
+
+                .calculate-btn {
+                              width: 100%;
+                              background: #2c5aa0;
+                              color: white;
+                              border: none;
+                              padding: 15px;
+                              font-size: 1.1rem;
+                              border-radius: 5px;
+                              cursor: pointer;
+                              font-weight: 600;
+                              transition: background 0.3s;
+                }
+
+                .calculate-btn:hover {
+                              background: #1e3a72;
+                }
+
+                .results-section {
+                              text-align: center;
+                }
+
+                .payment-result {
+                              background: #e8f2ff;
+                              padding: 2rem;
+                              border-radius: 10px;
+                              margin-bottom: 2rem;
+                }
+
+                .payment-value {
+                              font-size: 3rem;
+                              font-weight: bold;
+                              color: #2c5aa0;
+                              margin-bottom: 0.5rem;
+                }
+
+                .payment-label {
+                              font-size: 1.2rem;
+                              color: #666;
+                              margin-bottom: 1rem;
+                }
+
+                .breakdown {
+                              display: grid;
+                              grid-template-columns: 1fr 1fr;
+                              gap: 1rem;
+                              margin-top: 1rem;
+                }
+
+                .breakdown-item {
+                              background: white;
+                              padding: 1rem;
+                              border-radius: 5px;
+                              border-left: 4px solid #2c5aa0;
+                }
+
+                .breakdown-label {
+                              font-size: 0.9rem;
+                              color: #666;
+                              margin-bottom: 0.5rem;
+                }
+
+                .breakdown-value {
+                              font-size: 1.5rem;
+                              font-weight: bold;
+                              color: #2c5aa0;
+                }
+
+                .amortization-chart {
+                              background: white;
+                              border: 2px solid #e0e0e0;
+                              border-radius: 10px;
+                              overflow: hidden;
+                              margin-top: 2rem;
+                }
+
+                .chart-header {
+                              background: #2c5aa0;
+                              color: white;
+                              padding: 1rem;
+                              font-weight: 600;
+                              text-align: center;
+                }
+
+                .chart-summary {
+                              padding: 1rem;
+                              display: grid;
+                              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                              gap: 1rem;
+                }
+
+                .summary-item {
+                              text-align: center;
+                              padding: 1rem;
+                              background: #f8f9fa;
+                              border-radius: 5px;
+                }
+
+                .summary-label {
+                              font-size: 0.9rem;
+                              color: #666;
+                              margin-bottom: 0.5rem;
+                }
+
+                .summary-value {
+                              font-size: 1.2rem;
+                              font-weight: bold;
+                              color: #2c5aa0;
+                }
+
+                .info-section {
+                              background: white;
+                              padding: 2rem;
+                              border-radius: 10px;
+                              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                }
+
+                .info-section h2 {
+                              color: #2c5aa0;
+                              margin-bottom: 1rem;
+                }
+
+                .info-section h3 {
+                              color: #2c5aa0;
+                              margin: 1.5rem 0 0.8rem 0;
+                }
+
+                .info-section p {
+                              color: #666;
+                              margin-bottom: 1rem;
+                }
+
+                .info-section ul {
+                              color: #666;
+                              margin-left: 1.5rem;
+                              margin-bottom: 1rem;
+                }
+
+                .footer {
+                              background: #2c5aa0;
+                              color: white;
+                              text-align: center;
+                              padding: 2rem 0;
+                              margin-top: 3rem;
+                }
+
+                .footer-links {
+                              margin-bottom: 1rem;
+                }
+
+                .footer-links a {
+                              color: white;
+                              text-decoration: none;
+                              margin: 0 15px;
+                }
+
+                .footer-links a:hover {
+                              text-decoration: underline;
+                }
+
+                @media (max-width: 768px) {
+                              .mortgage-calculator {
+                                                grid-template-columns: 1fr;
+                              }
+
+                              .nav {
+                                                flex-direction: column;
+                                                gap: 1rem;
+                              }
+
+                              .nav-links {
+                                                flex-wrap: wrap;
+                                                justify-content: center;
+                              }
+
+                              .page-title {
+                                                font-size: 2rem;
+                              }
+
+                              .breakdown {
+                                                grid-template-columns: 1fr;
+                              }
+                }
+            </style>
+  </head>
+  <body>
+        <header class="header">
+                  <div class="container">
+                                <nav class="nav">
+                                                  <a href="/" class="logo">CalculatorPro.net</a>a>
+                                                  <div class="nav-links">
+                                                                        <a href="/">Home</a>a>
+                                                                        <a href="/bmi-calculator.html">BMI Calculator</a>a>
+                                                                        <a href="/mortgage-calculator.html">Mortgage</a>a>
+                                                                        <a href="/scientific-calculator.html">Scientific</a>a>
+                                                  </div>div>
+                                </nav>nav>
+                  </div>div>
+        </header>header>
+
+        <main class="container main-content">
+                  <section class="calculator-section">
+                                <h1 class="page-title">Mortgage Calculator</h1>h1>
+                                <p class="page-description">
+                                                  Calculate your monthly mortgage payment, total interest, and loan details. 
+                                                  Compare different loan terms and rates to find the best mortgage option for you.
+                                </p>p>
+
+                                <div class="mortgage-calculator">
+                                                  <div class="calculator-form">
+                                                                        <h3 style="color: #2c5aa0; margin-bottom: 1rem;">Loan Details</h3>h3>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="home-price">Home Price</label>label>
+                                                                                                  <div class="input-group">
+                                                                                                                                <span class="input-prefix">$</span>span>
+                                                                                                                                <input type="number" id="home-price" min="1000" max="10000000" placeholder="350,000" value="350000">
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="down-payment">Down Payment</label>label>
+                                                                                                  <div class="input-group">
+                                                                                                                                <span class="input-prefix">$</span>span>
+                                                                                                                                <input type="number" id="down-payment" min="0" placeholder="70,000" value="70000">
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="loan-term">Loan Term</label>label>
+                                                                                                  <select id="loan-term">
+                                                                                                                                <option value="15">15 years</option>option>
+                                                                                                                                <option value="20">20 years</option>option>
+                                                                                                                                <option value="25">25 years</option>option>
+                                                                                                                                <option value="30" selected>30 years</option>option>
+                                                                                                    </select>select>
+                                                                        </div>div>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="interest-rate">Interest Rate (% per year)</label>label>
+                                                                                                  <div class="input-group">
+                                                                                                                                <input type="number" id="interest-rate" min="0.1" max="20" step="0.01" placeholder="6.5" value="6.5">
+                                                                                                                                <span class="input-prefix" style="right: 12px; left: auto;">%</span>span>
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="property-tax">Property Tax (annual)</label>label>
+                                                                                                  <div class="input-group">
+                                                                                                                                <span class="input-prefix">$</span>span>
+                                                                                                                                <input type="number" id="property-tax" min="0" placeholder="4,200" value="4200">
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="home-insurance">Home Insurance (annual)</label>label>
+                                                                                                  <div class="input-group">
+                                                                                                                                <span class="input-prefix">$</span>span>
+                                                                                                                                <input type="number" id="home-insurance" min="0" placeholder="1,200" value="1200">
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <div class="form-group">
+                                                                                                  <label for="pmi">PMI (monthly)</label>label>
+                                                                                                  <div class="input-group">
+                                                                                                                                <span class="input-prefix">$</span>span>
+                                                                                                                                <input type="number" id="pmi" min="0" placeholder="200" value="0">
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <button type="button" class="calculate-btn" onclick="calculateMortgage()">Calculate Payment</button>button>
+                                                  </div>div>
+
+                                                  <div class="results-section">
+                                                                        <div id="payment-result" class="payment-result">
+                                                                                                  <div class="payment-value" id="monthly-payment">$1,847</div>div>
+                                                                                                  <div class="payment-label">Monthly Payment</div>div>
+
+                                                                                                  <div class="breakdown">
+                                                                                                                                <div class="breakdown-item">
+                                                                                                                                                                  <div class="breakdown-label">Principal & Interest</div>div>
+                                                                                                                                                                  <div class="breakdown-value" id="principal-interest">$1,398</div>div>
+                                                                                                                                  </div>div>
+                                                                                                                                <div class="breakdown-item">
+                                                                                                                                                                  <div class="breakdown-label">Property Tax</div>div>
+                                                                                                                                                                  <div class="breakdown-value" id="property-tax-monthly">$350</div>div>
+                                                                                                                                  </div>div>
+                                                                                                                                <div class="breakdown-item">
+                                                                                                                                                                  <div class="breakdown-label">Home Insurance</div>div>
+                                                                                                                                                                  <div class="breakdown-value" id="insurance-monthly">$100</div>div>
+                                                                                                                                  </div>div>
+                                                                                                                                <div class="breakdown-item">
+                                                                                                                                                                  <div class="breakdown-label">PMI</div>div>
+                                                                                                                                                                  <div class="breakdown-value" id="pmi-monthly">$0</div>div>
+                                                                                                                                  </div>div>
+                                                                                                    </div>div>
+                                                                        </div>div>
+
+                                                                        <div class="amortization-chart">
+                                                                                                  <div class="chart-header">Loan Summary</div>div>
+                                                                                                  <div class="chart-summary">
+                                                                                                                                <div class="summary-item">
+                                                                                                                                                                  <div class="summary-label">Total Loan Amount</div>div>
+                                                                                                                                                                  <div class="summary-value" id="loan-amount">$280,000</div>div>
+                                                                                                                                  </div>div>
+                                                                                                                                <div class="summary-item">
+                                                                                                                                                                  <div class="summary-label">Total Interest</div>div>
+                                                                                                                                                                  <div class="summary-value" id="total-interest">$223,400</div>div>
+                                                                                                                                  </div>div>
+                                                                                                                                <div class="summary-item">
+                                                                                                                                                                  <div class="summary-label">Total Payments</div>div>
+                                                                                                                                                                  <div class="summary-value" id="total-payments">$503,400</div>div>
+                                                                                                                                  </div>div>
+                                                                                                    </div>div>
+                                                                        </div>div>
+                                                  </div>div>
+                                </div>div>
+                  </section>section>
+
+                  <section class="info-section">
+                                <h2>Understanding Mortgage Calculations</h2>
+                              <p>
+                                                A mortgage calculator helps you estimate your monthly home loan payments based on the home price, 
+                                                down payment, loan term, and interest rate. Understanding these components can help you make informed 
+                                                decisions about your home purchase.
+                              </p>
+
+                                <h3>Key Mortgage Components</h3>
+                                <ul>
+                                                  <li><strong>Principal:</strong> The amount you borrow to buy the home</li>
+                                                <li><strong>Interest:</strong> The cost of borrowing money, expressed as an annual percentage rate</li>
+                                                <li><strong>Property Tax:</strong>strong> Annual tax on your property, usually paid monthly through escrow</li>
+                                                <li><strong>Home Insurance:</strong> Protects your home against damage and disasters</li>
+                                                <li><strong>PMI:</strong> Private Mortgage Insurance, required if down payment is less than 20%</li>
+                                </ul>
+                              
+                              <h3>Tips for Better Mortgage Rates</h3>
+                              <ul>
+                                              <li>Improve your credit score before applying</li>
+                                              <li>Save for a larger down payment (20% or more)</li>
+                                              <li>Compare rates from multiple lenders</li>
+                                              <li>Consider shorter loan terms for lower total interest</li>
+                                              <li>Pay down existing debt to improve debt-to-income ratio</li>
+                              </ul>
+                              
+                              <h3>Types of Mortgage Loans</h3>
+                              <p>
+                                                <strong>Fixed-Rate Mortgages:</strong> Interest rate remains constant throughout the loan term.<br>
+                                                <strong>Adjustable-Rate Mortgages (ARM):</strong> Interest rate can change periodically based on market conditions.<br>
+                                                <strong>FHA Loans:</strong> Government-backed loans with lower down payment requirements.<br>
+                                                <strong>VA Loans:</strong> Available to eligible veterans and service members with no down payment required.
+                              </p>
+                  </section>section>
+        </main>main>
+
+        <footer class="footer">
+                  <div class="container">
+                                <div class="footer-links">
+                                                  <a href="#about">About Us</a>a>
+                                                  <a href="#sitemap">Sitemap</a>a>
+                                                  <a href="#terms">Terms of Use</a>a>
+                                                  <a href="#privacy">Privacy Policy</a>a>
+                                                  <a href="#contact">Contact</a>a>
+                                </div>div>
+                                <p>&copy; 2024 CalculatorPro.net. All rights reserved. | Free mortgage calculator for home buyers.</p>
+                  </div>div>
+        </footer>footer>
+  
+      <script>
+                function calculateMortgage() {
+                              // Get input values
+                              const homePrice = parseFloat(document.getElementById('home-price').value) || 0;
+                              const downPayment = parseFloat(document.getElementById('down-payment').value) || 0;
+                              const loanTerm = parseInt(document.getElementById('loan-term').value) || 30;
+                              const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+                              const propertyTax = parseFloat(document.getElementById('property-tax').value) || 0;
+                              const homeInsurance = parseFloat(document.getElementById('home-insurance').value) || 0;
+                              const pmi = parseFloat(document.getElementById('pmi').value) || 0;
+
+                              // Validate inputs
+                              if (homePrice <= 0) {
+                                                alert('Please enter a valid home price');
+                                                return;
+                              }
+
+                              if (downPayment >= homePrice) {
+                                                alert('Down payment cannot be greater than or equal to home price');
+                                                return;
+                              }
+
+                              // Calculate loan amount
+                              const loanAmount = homePrice - downPayment;
+
+                              // Calculate monthly payment (Principal & Interest)
+                              const monthlyRate = annualRate / 100 / 12;
+                              const numPayments = loanTerm * 12;
+
+                              let monthlyPI = 0;
+                              if (monthlyRate > 0) {
+                                                monthlyPI = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                                                                             (Math.pow(1 + monthlyRate, numPayments) - 1);
+                              } else {
+                                                monthlyPI = loanAmount / numPayments;
+                              }
+
+                              // Calculate other monthly costs
+                              const monthlyPropertyTax = propertyTax / 12;
+                              const monthlyInsurance = homeInsurance / 12;
+
+                              // Calculate total monthly payment
+                              const totalMonthlyPayment = monthlyPI + monthlyPropertyTax + monthlyInsurance + pmi;
+
+                              // Calculate totals
+                              const totalInterest = (monthlyPI * numPayments) - loanAmount;
+                              const totalPayments = monthlyPI * numPayments;
+
+                              // Update display
+                              document.getElementById('monthly-payment').textContent = '$' + Math.round(totalMonthlyPayment).toLocaleString();
+                              document.getElementById('principal-interest').textContent = '$' + Math.round(monthlyPI).toLocaleString();
+                              document.getElementById('property-tax-monthly').textContent = '$' + Math.round(monthlyPropertyTax).toLocaleString();
+                              document.getElementById('insurance-monthly').textContent = '$' + Math.round(monthlyInsurance).toLocaleString();
+                              document.getElementById('pmi-monthly').textContent = '$' + Math.round(pmi).toLocaleString();
+
+                              document.getElementById('loan-amount').textContent = '$' + Math.round(loanAmount).toLocaleString();
+                              document.getElementById('total-interest').textContent = '$' + Math.round(totalInterest).toLocaleString();
+                              document.getElementById('total-payments').textContent = '$' + Math.round(totalPayments).toLocaleString();
+                }
+
+                // Calculate on page load
+                calculateMortgage();
+
+                // Add event listeners for real-time calculation
+                document.querySelectorAll('input, select').forEach(element => {
+                              element.addEventListener('input', calculateMortgage);
+                });
+
+                // Format currency inputs
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                              input.addEventListener('blur', function() {
+                                                if (this.value && this.id !== 'interest-rate') {
+                                                                      const value = parseFloat(this.value);
+                                                                      if (!isNaN(value)) {
+                                                                                                this.value = Math.round(value);
+                                                                      }
+                                                }
+                              });
+                });
+      </script>
+  </body>
+</html>html>
+      </script></p>
+                              </p></li></li></strong></strong></li></li></strong></strong></li>
+                                </ul>
+                              </p></h2>
+  </body>
+      </style></title>
+  </head>
