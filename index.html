@@ -4,6 +4,261 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CalculatorPro.net - Free Online Calculators</title>
+        <meta name="description" content="Free online calculators for financial, math, health and more calculations.">
+        <style>
+                  * { margin: 0; padding: 0; box-sizing: border-box; }
+                  body { 
+                                font-family: Arial, sans-serif; 
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                min-height: 100vh; 
+                                color: #333; 
+                  }
+                  .header { 
+                                background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
+                                color: white; 
+                                padding: 20px 0; 
+                                text-align: center; 
+                  }
+                  .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+                  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+                  .featured-calculators { 
+                                background: white; 
+                                border-radius: 15px; 
+                                padding: 30px; 
+                                margin: 20px 0; 
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                  }
+                  .featured-grid { 
+                                display: grid; 
+                                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+                                gap: 20px; 
+                  }
+                  .featured-card { 
+                                background: #f8f9fa; 
+                                border-radius: 12px; 
+                                padding: 20px; 
+                                text-align: center; 
+                  }
+                  .featured-card a { 
+                                background: #2c5aa0; 
+                                color: white; 
+                                padding: 10px 20px; 
+                                border-radius: 8px; 
+                                text-decoration: none; 
+                                display: inline-block; 
+                  }
+                  .calculator-category { 
+                                background: white; 
+                                border-radius: 15px; 
+                                padding: 25px; 
+                                margin: 20px 0; 
+                                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                  }
+                  .calculator-list { list-style: none; }
+                  .calculator-list a { 
+                                color: #555; 
+                                text-decoration: none; 
+                                padding: 8px 12px; 
+                                border-radius: 8px; 
+                                display: block; 
+                                background: #f8f9fa; 
+                                margin-bottom: 5px;
+                  }
+                  .calculator-list a:hover { background: #2c5aa0; color: white; }
+                  .footer { 
+                                background: #2c5aa0; 
+                                color: white; 
+                                text-align: center; 
+                                padding: 30px 0; 
+                                margin-top: 50px; 
+                  }
+                  @media (max-width: 768px) {
+                                .header h1 { font-size: 2rem; }
+                                .container { padding: 15px; }
+                                .featured-grid { grid-template-columns: 1fr; }
+                  }
+              </style>
+  </head>
+  <body>
+        <div class="header">
+                  <div class="container">
+                                <h1>CalculatorPro.net</h1>
+                              <p>Professional Online Calculators for Every Need</p>
+                  </div>div>
+        </div>div>
+  
+      <div class="container">
+              <div class="featured-calculators">
+                          <h2 style="text-align: center; color: #2c5aa0; margin-bottom: 30px;">Featured Calculators</h2>
+                          <div class="featured-grid">
+                                          <div class="featured-card">
+                                                              <h3>�� Scientific Calculator</h3>
+                                                              <p>Advanced mathematical calculations</p>
+                                                              <a href="#calculator">Use Calculator</a>a>
+                                          </div>div>
+                                          <div class="featured-card">
+                                                              <h3>�� BMI Calculator</h3>
+                                                              <p>Calculate your Body Mass Index</p>
+                                                              <a href="bmi-calculator.html">Calculate BMI</a>a>
+                                          </div>div>
+                                          <div class="featured-card">
+                                                              <h3>�� Mortgage Calculator</h3>
+                                                              <p>Calculate monthly mortgage payments</p>
+                                                              <a href="mortgage-calculator.html">Calculate Mortgage</a>a>
+                                          </div>div>
+                                          <div class="featured-card">
+                                                              <h3>�� Loan Calculator</h3>
+                                                              <p>Calculate loan payments and interest</p>
+                                                              <a href="loan-calculator.html">Calculate Loan</a>a>
+                                          </div>div>
+                          </div>div>
+              </div>div>
+      
+              <div class="calculator-category">
+                          <h3 style="color: #2c5aa0; margin-bottom: 20px;">�� Financial Calculators</h3>
+                          <ul class="calculator-list">
+                                          <li><a href="mortgage-calculator.html">Mortgage Calculator</a>a></li>
+                                          <li><a href="loan-calculator.html">Loan Calculator</a>a></li>
+                                          <li><a href="#interest">Interest Calculator</a>a></li>
+                                          <li><a href="#investment">Investment Calculator</a>a></li>
+                                          <li><a href="#budget">Budget Calculator</a>a></li>
+                                          <li><a href="#currency">Currency Converter</a>a></li>
+                          </ul>ul>
+              </div>div>
+      
+              <div class="calculator-category">
+                          <h3 style="color: #2c5aa0; margin-bottom: 20px;">�� Health & Fitness</h3>
+                          <ul class="calculator-list">
+                                          <li><a href="bmi-calculator.html">BMI Calculator</a>a></li>
+                                          <li><a href="#calories">Calorie Calculator</a>a></li>
+                                          <li><a href="#body-fat">Body Fat Calculator</a>a></li>
+                                          <li><a href="#ideal-weight">Ideal Weight Calculator</a>a></li>
+                                          <li><a href="#pregnancy">Pregnancy Calculator</a>a></li>
+                                          <li><a href="#heart-rate">Heart Rate Calculator</a>a></li>
+                          </ul>ul>
+              </div>div>
+      
+              <div class="calculator-category">
+                          <h3 style="color: #2c5aa0; margin-bottom: 20px;">�� Math & Science</h3>
+                          <ul class="calculator-list">
+                                          <li><a href="#calculator">Scientific Calculator</a>a></li>
+                                          <li><a href="percentage-calculator.html">Percentage Calculator</a>a></li>
+                                          <li><a href="#fraction">Fraction Calculator</a>a></li>
+                                          <li><a href="#algebra">Algebra Calculator</a>a></li>
+                                          <li><a href="#geometry">Geometry Calculator</a>a></li>
+                                          <li><a href="#statistics">Statistics Calculator</a>a></li>
+                          </ul>ul>
+              </div>div>
+      
+              <div class="calculator-category">
+                          <h3 style="color: #2c5aa0; margin-bottom: 20px;">�� Other Tools</h3>
+                          <ul class="calculator-list">
+                                          <li><a href="age-calculator.html">Age Calculator</a>a></li>
+                                          <li><a href="#date">Date Calculator</a>a></li>
+                                          <li><a href="#time">Time Calculator</a>a></li>
+                                          <li><a href="#tip">Tip Calculator</a>a></li>
+                                          <li><a href="#grade">Grade Calculator</a>a></li>
+                                          <li><a href="#password">Password Generator</a>a></li>
+                          </ul>ul>
+              </div>div>
+      
+              <div id="calculator" class="featured-calculators">
+                          <h2 style="text-align: center; color: #2c5aa0; margin-bottom: 30px;">Scientific Calculator</h2>
+                          <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; max-width: 400px; margin: 0 auto;">
+                                          <div id="display" style="background: #000; color: #0f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-family: monospace; font-size: 1.5rem; text-align: right; min-height: 60px;">0</div>div>
+                                          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                                                              <button onclick="clearAll()" style="grid-column: span 2; background: #dc3545; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">Clear</button>button>
+                                                              <button onclick="deleteLast()" style="background: #ffc107; color: black; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">⌫</button>button>
+                                                              <button onclick="appendToDisplay('/')" style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">÷</button>button>
+                                                              
+                                                              <button onclick="appendToDisplay('7')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">7</button>button>
+                                                              <button onclick="appendToDisplay('8')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">8</button>button>
+                                                              <button onclick="appendToDisplay('9')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">9</button>button>
+                                                              <button onclick="appendToDisplay('*')" style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">×</button>button>
+                                                              
+                                                              <button onclick="appendToDisplay('4')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">4</button>button>
+                                                              <button onclick="appendToDisplay('5')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">5</button>button>
+                                                              <button onclick="appendToDisplay('6')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">6</button>button>
+                                                              <button onclick="appendToDisplay('-')" style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">−</button>button>
+                                                              
+                                                              <button onclick="appendToDisplay('1')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">1</button>button>
+                                                              <button onclick="appendToDisplay('2')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">2</button>button>
+                                                              <button onclick="appendToDisplay('3')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">3</button>button>
+                                                              <button onclick="appendToDisplay('+')" style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">+</button>button>
+                                                              
+                                                              <button onclick="appendToDisplay('0')" style="grid-column: span 2; background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">0</button>button>
+                                                              <button onclick="appendToDisplay('.')" style="background: #6c757d; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">.</button>button>
+                                                              <button onclick="calculate()" style="background: #007bff; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer;">=</button>button>
+                                          </div>div>
+                          </div>div>
+              </div>div>
+      </div>div>
+  
+      <footer class="footer">
+              <div class="container">
+                          <h3>CalculatorPro.net</h3>
+                          <p>&copy; 2024 CalculatorPro.net. All rights reserved.</p>
+              </div>div>
+      </footer>footer>
+  
+      <script>
+              let display = document.getElementById('display');
+              let currentInput = '0';
+              let shouldResetDisplay = false;
+      
+              function updateDisplay() {
+                            display.textContent = currentInput;
+              }
+      
+              function appendToDisplay(value) {
+                            if (shouldResetDisplay) {
+                                              currentInput = '';
+                                              shouldResetDisplay = false;
+                            }
+                                          
+                                          if (currentInput === '0' && value !== '.') {
+                                                            currentInput = value;
+                                          } else {
+                                                            currentInput += value;
+                                          }
+                            updateDisplay();
+              }
+      
+              function clearAll() {
+                            currentInput = '0';
+                            updateDisplay();
+              }
+      
+              function deleteLast() {
+                            if (currentInput.length > 1) {
+                                              currentInput = currentInput.slice(0, -1);
+                            } else {
+                                              currentInput = '0';
+                            }
+                            updateDisplay();
+              }
+      
+              function calculate() {
+                            try {
+                                              let expression = currentInput.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+                                              let result = eval(expression);
+                                              currentInput = result.toString();
+                                              shouldResetDisplay = true;
+                                              updateDisplay();
+                            } catch (error) {
+                                              currentInput = 'Error';
+                                              shouldResetDisplay = true;
+                                              updateDisplay();
+                            }
+              }
+      </script>
+  </body>
+</html>html></p></li></li></p></p></h1>!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CalculatorPro.net - Free Online Calculators</title>
       <meta name="description" content="Free online calculators for financial, math, health and more calculations. Professional calculator website with mortgage, loan, BMI, scientific calculators and more.">
       <meta name="keywords" content="calculator, online calculator, free calculator, mortgage calculator, loan calculator, BMI calculator, scientific calculator">
       <style>
