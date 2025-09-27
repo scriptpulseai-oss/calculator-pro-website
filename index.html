@@ -1,5 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>CalculatorPro - Professional Online Calculators</title>
+    <meta name="description" content="Free professional online calculators for financial, math, health and more calculations.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+            * {
+                          margin: 0;
+                          padding: 0;
+                          box-sizing: border-box;
+            }
+    
+            body {
+                          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                          min-height: 100vh;
+                          color: #333;
+                          overflow-x: hidden;
+            }
+    
+            .navbar {
+                          background: rgba(255, 255, 255, 0.95);
+                          backdrop-filter: blur(10px);
+                          padding: 1rem 0;
+                          position: fixed;
+                          width: 100%;
+                          top: 0;
+                          z-index: 1000;
+                          box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            }
+    
+            .nav-container {
+                          max-width: 1400px;
+                          margin: 0 auto;
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 0 2rem;
+            }
+    
+            .logo {
+                          display: flex;
+                          align-items: center;
+                          font-size: 1.8rem;
+                          font-weight: bold;
+                          color: #2c5aa0;
+                          text-decoration: none;
+            }
+    
+            .logo i {
+                          margin-right: 0.5rem;
+                          color: #667eea;
+            }
+    
+            .nav-links {
+                          display: flex;
+                          gap: 2rem;
+                          list-style: none;
+            }
+    
+            .nav-links a {
+                          color: #555;
+                          text-decoration: none;
+                          font-weight: 500;
+                          transition: color 0.3s ease;
+                          padding: 0.5rem 1rem;
+                          border-radius: 8px;
+            }
+    
+            .nav-links a:hover {
+                          color: #2c5aa0;
+                          background: rgba(44, 90, 160, 0.1);
+            }
+    
+            .main-content {
+                          margin-top: 100px;
+                          padding: 2rem;
+            }
+    
+            .hero {
+                          text-align: center;
+                          max-width: 1200px;
+                          margin: 0 auto 4rem;
+                          background: rgba(255, 255, 255, 0.95);
+                          padding: 4rem 2rem;
+                          border-radius: 20px;
+                          box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            }
+    
+            .hero h1 {
+                          font-size: 3.5rem;
+                          color: #2c5aa0;
+                          margin-bottom: 1rem;
+                          font-weight: 700;
+            }
+    
+            .hero p {
+                          font-size: 1.3rem;
+                          color: #666;
+                          margin-bottom: 2rem;
+                          max-width: 600px;
+                          margin-left: auto;
+                          margin-right: auto;
+            }
+    
+            .search-box {
+                          max-width: 500px;
+                          margin: 0 auto 2rem;
+                          position: relative;
+            }
+    
+            .search-input {
+                          width: 100%;
+                          padding: 1rem 1rem 1rem 3rem;
+                          border: 2px solid #e0e0e0;
+                          border-radius: 50px;
+                          font-size: 1.1rem;
+                          outline: none;
+                          transition: all 0.3s ease;
+            }
+    
+            .search-input:focus {
+                          border-color: #667eea;
+                          box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+            }
+    
+            .search-icon {
+                          position: absolute;
+                          left: 1rem;
+                          top: 50%;
+                          transform: translateY(-50%);
+                          color: #999;
+            }
+    
+            .calculators-grid {
+                          max-width: 1400px;
+                          margin: 0 auto;
+                          display: grid;
+                          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                          gap: 2rem;
+                          padding: 0 1rem;
+            }
+    
+            .calculator-card {
+                          background: white;
+                          border-radius: 20px;
+                          padding: 2rem;
+                          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                          transition: all 0.3s ease;
+                          cursor: pointer;
+                          border: 2px solid transparent;
+            }
+    
+            .calculator-card:hover {
+                          transform: translateY(-10px);
+                          box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+                          border-color: #667eea;
+            }
+    
+            .card-icon {
+                          width: 60px;
+                          height: 60px;
+                          background: linear-gradient(135deg, #667eea, #764ba2);
+                          border-radius: 15px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin-bottom: 1.5rem;
+                          color: white;
+                          font-size: 1.5rem;
+            }
+    
+            .card-title {
+                          font-size: 1.5rem;
+                          color: #2c5aa0;
+                          margin-bottom: 1rem;
+                          font-weight: 600;
+            }
+    
+            .card-description {
+                          color: #666;
+                          margin-bottom: 1.5rem;
+                          line-height: 1.6;
+            }
+    
+            .card-button {
+                          background: linear-gradient(135deg, #667eea, #764ba2);
+                          color: white;
+                          padding: 0.8rem 2rem;
+                          border: none;
+                          border-radius: 50px;
+                          font-weight: 600;
+                          cursor: pointer;
+                          transition: all 0.3s ease;
+                          text-decoration: none;
+                          display: inline-block;
+            }
+    
+            .card-button:hover {
+                          transform: translateY(-2px);
+                          box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            }
+    
+            .features-section {
+                          background: rgba(255, 255, 255, 0.95);
+                          margin: 4rem auto;
+                          max-width: 1200px;
+                          padding: 3rem 2rem;
+                          border-radius: 20px;
+                          box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            }
+    
+            .features-grid {
+                          display: grid;
+                          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                          gap: 2rem;
+                          margin-top: 2rem;
+            }
+    
+            .feature-item {
+                          text-align: center;
+                          padding: 1.5rem;
+            }
+    
+            .feature-icon {
+                          width: 50px;
+                          height: 50px;
+                          background: linear-gradient(135deg, #667eea, #764ba2);
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 1rem;
+                          color: white;
+                          font-size: 1.2rem;
+            }
+    
+            .footer {
+                          background: #2c5aa0;
+                          color: white;
+                          text-align: center;
+                          padding: 3rem 2rem;
+                          margin-top: 4rem;
+            }
+    
+            .footer-content {
+                          max-width: 1200px;
+                          margin: 0 auto;
+            }
+    
+            .footer h3 {
+                          margin-bottom: 1rem;
+                          font-size: 1.5rem;
+            }
+    
+            .footer-links {
+                          display: flex;
+                          justify-content: center;
+                          gap: 2rem;
+                          margin: 2rem 0;
+                          flex-wrap: wrap;
+            }
+    
+            .footer-links a {
+                          color: white;
+                          text-decoration: none;
+                          opacity: 0.9;
+                          transition: opacity 0.3s ease;
+            }
+    
+            .footer-links a:hover {
+                          opacity: 1;
+            }
+    
+            @media (max-width: 768px) {
+                          .nav-links {
+                                            display: none;
+                          }
+                          
+                          .hero h1 {
+                                            font-size: 2.5rem;
+                          }
+                          
+                          .hero {
+                                            padding: 2rem 1rem;
+                          }
+                          
+                          .calculators-grid {
+                                            grid-template-columns: 1fr;
+                                            padding: 0;
+                          }
+                          
+                          .nav-container {
+                                            padding: 0 1rem;
+                          }
+                          
+                          .main-content {
+                                            padding: 1rem;
+                          }
+            }
+    
+            @media (max-width: 480px) {
+                          .hero h1 {
+                                            font-size: 2rem;
+                          }
+                          
+                          .calculator-card {
+                                            padding: 1.5rem;
+                          }
+            }
+        </style>
+</head>
+<body>
+      <nav class="navbar">
+                <div class="nav-container">
+                              <a href="#" class="logo">
+                                                <i class="fas fa-calculator"></i>i>
+                                                CalculatorPro
+                              </a>a>
+                              <ul class="nav-links">
+                                                <li><a href="#"><i class="fas fa-home"></i>i> Home</a>a></li>
+                                              <li><a href="bmi-calculator.html"><i class="fas fa-heartbeat"></i>i> BMI</a>a></li>
+                                              <li><a href="percentage-calculator.html"><i class="fas fa-percent"></i>i> Percentage</a>a></li>
+                                              <li><a href="mortgage-calculator.html"><i class="fas fa-home"></i>i> Mortgage</a>a></li>
+                              </ul>ul>
+                </div>div>
+      </nav>nav>
+
+    <main class="main-content">
+            <section class="hero">
+                        <h1>Professional Calculators</h1>
+                        <p>Access powerful, accurate calculators for all your mathematical, financial, and health calculations. Free and easy to use.</p>
+                        
+                        <div class="search-box">
+                                        <i class="fas fa-search search-icon"></i>i>
+                                        <input type="text" class="search-input" placeholder="Search calculators (BMI, Mortgage, Percentage...)" id="searchInput">
+                        </div>div>
+            </section>section>
+    
+            <section class="calculators-grid">
+                        <div class="calculator-card" onclick="window.location.href='#scientific'">
+                                        <div class="card-icon">
+                                                            <i class="fas fa-calculator"></i>i>
+                                        </div>div>
+                                        <h3 class="card-title">Scientific Calculator</h3>
+                                        <p class="card-description">Advanced mathematical calculations with trigonometry, logarithms, and scientific functions.</p>
+                                        <a href="#scientific" class="card-button">Use Calculator</a>a>
+                        </div>div>
+            
+                        <div class="calculator-card" onclick="window.location.href='bmi-calculator.html'">
+                                        <div class="card-icon">
+                                                            <i class="fas fa-heartbeat"></i>i>
+                                        </div>div>
+                                        <h3 class="card-title">BMI Calculator</h3>
+                                        <p class="card-description">Calculate your Body Mass Index and get health recommendations based on your results.</p>
+                                        <a href="bmi-calculator.html" class="card-button">Calculate BMI</a>a>
+                        </div>div>
+            
+                        <div class="calculator-card" onclick="window.location.href='percentage-calculator.html'">
+                                        <div class="card-icon">
+                                                            <i class="fas fa-percent"></i>i>
+                                        </div>div>
+                                        <h3 class="card-title">Percentage Calculator</h3>
+                                        <p class="card-description">Calculate percentages, percentage changes, increases, and decreases with ease.</p>
+                                        <a href="percentage-calculator.html" class="card-button">Calculate %</a>a>
+                        </div>div>
+            
+                        <div class="calculator-card" onclick="window.location.href='mortgage-calculator.html'">
+                                        <div class="card-icon">
+                                                            <i class="fas fa-home"></i>i>
+                                        </div>div>
+                                        <h3 class="card-title">Mortgage Calculator</h3>
+                                        <p class="card-description">Calculate monthly mortgage payments, total interest, and loan details.</p>
+                                        <a href="mortgage-calculator.html" class="card-button">Calculate Mortgage</a>a>
+                        </div>div>
+            
+                        <div class="calculator-card" onclick="window.location.href='age-calculator.html'">
+                                        <div class="card-icon">
+                                                            <i class="fas fa-birthday-cake"></i>i>
+                                        </div>div>
+                                        <h3 class="card-title">Age Calculator</h3>
+                                        <p class="card-description">Calculate your exact age in years, months, days, hours, minutes, and seconds.</p>
+                                        <a href="age-calculator.html" class="card-button">Calculate Age</a>a>
+                        </div>div>
+            
+                        <div class="calculator-card" onclick="window.location.href='loan-calculator.html'">
+                                        <div class="card-icon">
+                                                            <i class="fas fa-money-bill-wave"></i>i>
+                                        </div>div>
+                                        <h3 class="card-title">Loan Calculator</h3>
+                                        <p class="card-description">Calculate loan payments, interest rates, and payment schedules for any loan.</p>
+                                        <a href="loan-calculator.html" class="card-button">Calculate Loan</a>a>
+                        </div>div>
+            </section>section>
+    
+            <section class="features-section">
+                        <h2 style="text-align: center; color: #2c5aa0; margin-bottom: 1rem;">Why Choose CalculatorPro?</h2>
+                        <div class="features-grid">
+                                        <div class="feature-item">
+                                                            <div class="feature-icon">
+                                                                                    <i class="fas fa-mobile-alt"></i>i>
+                                                            </div>div>
+                                                            <h4>Mobile Friendly</h4>
+                                                            <p>Works perfectly on all devices - desktop, tablet, and mobile.</p>
+                                        </div>div>
+                                        <div class="feature-item">
+                                                            <div class="feature-icon">
+                                                                                    <i class="fas fa-bolt"></i>i>
+                                                            </div>div>
+                                                            <h4>Fast & Accurate</h4>
+                                                            <p>Lightning-fast calculations with precise results every time.</p>
+                                        </div>div>
+                                        <div class="feature-item">
+                                                            <div class="feature-icon">
+                                                                                    <i class="fas fa-shield-alt"></i>i>
+                                                            </div>div>
+                                                            <h4>100% Free</h4>
+                                                            <p>All calculators are completely free to use with no hidden charges.</p>
+                                        </div>div>
+                        </div>div>
+            </section>section>
+    
+            <section id="scientific" style="background: white; margin: 4rem auto; max-width: 800px; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                        <h2 style="text-align: center; color: #2c5aa0; margin-bottom: 2rem;">Scientific Calculator</h2>
+                        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; max-width: 400px; margin: 0 auto;">
+                                        <div id="display" style="background: #1a1a1a; color: #00ff41; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-family: monospace; font-size: 1.5rem; text-align: right; min-height: 60px; display: flex; align-items: center; justify-content: flex-end; border: 2px solid #333;">0</div>div>
+                                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                                                            <button onclick="clearAll()" style="grid-column: span 2; background: #dc3545; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">Clear</button>button>
+                                                            <button onclick="deleteLast()" style="background: #ffc107; color: black; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">⌫</button>button>
+                                                            <button onclick="appendToDisplay('/')" style="background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">÷</button>button>
+                                                            
+                                                            <button onclick="appendToDisplay('7')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">7</button>button>
+                                                            <button onclick="appendToDisplay('8')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">8</button>button>
+                                                            <button onclick="appendToDisplay('9')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">9</button>button>
+                                                            <button onclick="appendToDisplay('*')" style="background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">×</button>button>
+                                                            
+                                                            <button onclick="appendToDisplay('4')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">4</button>button>
+                                                            <button onclick="appendToDisplay('5')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">5</button>button>
+                                                            <button onclick="appendToDisplay('6')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">6</button>button>
+                                                            <button onclick="appendToDisplay('-')" style="background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">−</button>button>
+                                                            
+                                                            <button onclick="appendToDisplay('1')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">1</button>button>
+                                                            <button onclick="appendToDisplay('2')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">2</button>button>
+                                                            <button onclick="appendToDisplay('3')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">3</button>button>
+                                                            <button onclick="appendToDisplay('+')" style="background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">+</button>button>
+                                                            
+                                                            <button onclick="appendToDisplay('0')" style="grid-column: span 2; background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">0</button>button>
+                                                            <button onclick="appendToDisplay('.')" style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">.</button>button>
+                                                            <button onclick="calculate()" style="background: #007bff; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600;">=</button>button>
+                                                            
+                                                            <button onclick="appendToDisplay('Math.sin(')" style="background: #17a2b8; color: white; border: none; padding: 8px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 600;">sin</button>button>
+                                                            <button onclick="appendToDisplay('Math.cos(')" style="background: #17a2b8; color: white; border: none; padding: 8px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 600;">cos</button>button>
+                                                            <button onclick="appendToDisplay('Math.tan(')" style="background: #17a2b8; color: white; border: none; padding: 8px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 600;">tan</button>button>
+                                                            <button onclick="appendToDisplay('Math.sqrt(')" style="background: #17a2b8; color: white; border: none; padding: 8px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 600;">√</button>button>
+                                        </div>div>
+                        </div>div>
+            </section>section>
+    </main>main>
+
+    <footer class="footer">
+            <div class="footer-content">
+                        <h3><i class="fas fa-calculator"></i>i> CalculatorPro</h3>
+                        <div class="footer-links">
+                                        <a href="#about">About Us</a>a>
+                                        <a href="#privacy">Privacy Policy</a>a>
+                                        <a href="#terms">Terms of Service</a>a>
+                                        <a href="#contact">Contact</a>a>
+                                        <a href="#blog">Blog</a>a>
+                        </div>div>
+                        <p>&copy; 2024 CalculatorPro. All rights reserved. Professional calculators for everyone.</p>
+            </div>div>
+    </footer>footer>
+
+    <script>
+            let display = document.getElementById('display');
+            let currentInput = '0';
+            let shouldResetDisplay = false;
+    
+            function updateDisplay() {
+                          display.textContent = currentInput;
+            }
+    
+            function appendToDisplay(value) {
+                          if (shouldResetDisplay) {
+                                            currentInput = '';
+                                            shouldResetDisplay = false;
+                          }
+                                        
+                                        if (currentInput === '0' && value !== '.') {
+                                                          currentInput = value;
+                                        } else {
+                                                          currentInput += value;
+                                        }
+                          updateDisplay();
+            }
+    
+            function clearAll() {
+                          currentInput = '0';
+                          updateDisplay();
+            }
+    
+            function deleteLast() {
+                          if (currentInput.length > 1) {
+                                            currentInput = currentInput.slice(0, -1);
+                          } else {
+                                            currentInput = '0';
+                          }
+                          updateDisplay();
+            }
+    
+            function calculate() {
+                          try {
+                                            let expression = currentInput
+                                                                  .replace(/×/g, '*')
+                                                                  .replace(/÷/g, '/')
+                                                                  .replace(/−/g, '-');
+                                            
+                                            let result = eval(expression);
+                                            currentInput = result.toString();
+                                            shouldResetDisplay = true;
+                                            updateDisplay();
+                          } catch (error) {
+                                            currentInput = 'Error';
+                                            shouldResetDisplay = true;
+                                            updateDisplay();
+                          }
+            }
+    
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                          const searchTerm = e.target.value.toLowerCase();
+                          const cards = document.querySelectorAll('.calculator-card');
+                          
+                                                                                cards.forEach(card => {
+                                                                                                  const title = card.querySelector('.card-title').textContent.toLowerCase();
+                                                                                                  const description = card.querySelector('.card-description').textContent.toLowerCase();
+                                                                                                  
+                                                                                                              if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                                                                                                                                    card.style.display = 'block';
+                                                                                                                                    if (searchTerm) {
+                                                                                                                                                              card.style.border = '2px solid #667eea';
+                                                                                                                                                              card.style.background = 'linear-gradient(135deg, #f8f9ff, #ffffff)';
+                                                                                                                                      } else {
+                                                                                                                                                              card.style.border = '2px solid transparent';
+                                                                                                                                                              card.style.background = 'white';
+                                                                                                                                      }
+                                                                                                                } else {
+                                                                                                                                    card.style.display = searchTerm ? 'none' : 'block';
+                                                                                                                                    card.style.border = '2px solid transparent';
+                                                                                                                                    card.style.background = 'white';
+                                                                                                                }
+                                                                                });
+            });
+    
+            // Keyboard support for calculator
+            document.addEventListener('keydown', function(e) {
+                          const key = e.key;
+                          
+                                                  if ('0123456789.+-*/'.includes(key)) {
+                                                                    e.preventDefault();
+                                                                    appendToDisplay(key);
+                                                  } else if (key === 'Enter' || key === '=') {
+                                                                    e.preventDefault();
+                                                                    calculate();
+                                                  } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                                                                    e.preventDefault();
+                                                                    clearAll();
+                                                  } else if (key === 'Backspace') {
+                                                                    e.preventDefault();
+                                                                    deleteLast();
+                                                  }
+            });
+    
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                          anchor.addEventListener('click', function (e) {
+                                            e.preventDefault();
+                                            const target = document.querySelector(this.getAttribute('href'));
+                                            if (target) {
+                                                                  target.scrollIntoView({
+                                                                                            behavior: 'smooth',
+                                                                                            block: 'start'
+                                                                    });
+                                            }
+                          });
+            });
+    </script>
+</body>
+</html>html></p></p></h1></li></li>
+</body></title>
+</head><!DOCTYPE html>
+<html lang="en">
   <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
